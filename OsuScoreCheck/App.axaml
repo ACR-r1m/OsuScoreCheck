@@ -1,0 +1,35 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="OsuScoreCheck.App"
+             xmlns:local="using:OsuScoreCheck"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+	<Application.Resources>
+		<ResourceDictionary>
+			<FontFamily x:Key="Zen">avares://OsuScoreCheck/Assets/Fonts#Zen Kurenaido</FontFamily>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceInclude Source="/Controls/Styles/ColorsSize.axaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+	
+    <Application.Styles>	
+		<FluentTheme/>
+		<StyleInclude Source="avares://AsyncImageLoader.Avalonia/AdvancedImage.axaml" />
+		<StyleInclude Source="/Controls/Components/OsuMapInfo.axaml"/>
+		<StyleInclude Source="/Controls/Components/UserInfo.axaml"/>
+		<StyleInclude Source="/Controls/Components/ComboFilter.axaml"/>
+		<!--styles-->
+		<StyleInclude Source="/Controls/Styles/Animation.axaml"/>
+		<StyleInclude Source="/Controls/Styles/ScrollBar.axaml"/>
+		<StyleInclude Source="/Controls/Styles/Texts.axaml"/>
+		<StyleInclude Source="/Controls/Styles/TextBoxs.axaml"/>
+		<StyleInclude Source="/Controls/Styles/Buttons.axaml"/>
+		<StyleInclude Source="/Controls/Styles/CheckBoxs.axaml"/>	
+	</Application.Styles>
+</Application>

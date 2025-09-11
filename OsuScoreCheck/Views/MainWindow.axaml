@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
+        x:Class="OsuScoreCheck.Views.MainWindow"
+		x:DataType="MainWindowViewModel"
+        Icon="/Assets/OSC.ico"
+        Title="OsuScoreCheck"
+		Width="800" Height="700"
+		WindowStartupLocation="CenterScreen">	
+
+	<Window.DataContext>
+		<MainWindowViewModel/>
+	</Window.DataContext> 
+	
+	<Grid ColumnDefinitions="auto,*">
+		
+		<!--Left Panel-->
+		<Grid RowDefinitions="auto, *"
+			Grid.Column="0" Width="100"
+			Background="{DynamicResource 1Black}"
+			ZIndex="1">
+			
+			<LeftMenuControlView Grid.Row="0"/>
+		</Grid>
+		
+		<!--Main Zone-->
+		<Grid Grid.Column="1"
+			  Background="{DynamicResource 1Pink}">
+
+			<TransitioningContentControl Content="{Binding CurrentPage}">
+				<TransitioningContentControl.PageTransition>
+					<PageSlide Duration="0:00:00.5" Orientation="Vertical"/>
+				</TransitioningContentControl.PageTransition>
+			</TransitioningContentControl>
+		</Grid>
+	</Grid>
+
+</Window>

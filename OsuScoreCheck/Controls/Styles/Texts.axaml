@@ -1,0 +1,29 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Background="Gray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<StackPanel>
+				<TextBlock Text="test"/>
+				<Label Content="test"/>
+			</StackPanel>
+		</Border>
+    </Design.PreviewWith>
+
+	<Style Selector="Label">
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="FontSize" Value="{DynamicResource Text48}" />
+		<Setter Property="FontFamily" Value="{StaticResource Zen}"/>
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="Padding" Value="0" />
+	</Style>
+	<Style Selector="TextBlock">
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="FontSize" Value="{DynamicResource Text48}" />
+		<Setter Property="FontFamily" Value="{StaticResource Zen}"/>
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="Padding" Value="0" />
+	</Style>
+
+</Styles>

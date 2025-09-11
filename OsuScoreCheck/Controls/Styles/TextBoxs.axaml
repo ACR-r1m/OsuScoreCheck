@@ -1,0 +1,130 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Background="Gray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<StackPanel Spacing="8">
+				
+				<TextBox Classes="txt48" Text="test"/>
+				
+				<SvgTextBox SvgPath="\Assets\Svg\Components\Search24.svg"
+							Text="wdwdw"
+							Watermark="Тайлт/сложностль"
+							VerticalAlignment="Top"
+							HorizontalAlignment="Left"/>
+			</StackPanel>
+
+		</Border>
+    </Design.PreviewWith>
+
+	<Style Selector="TextBox.txt48">
+		<Setter Property="MinWidth" Value="300"/>
+		<Setter Property="MinHeight" Value="90"/>
+		<Setter Property="CaretBrush" Value="White"/>
+		<Setter Property="Padding" Value="16,4,16,16"/>
+		<Setter Property="Background" Value="{DynamicResource 1White}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource 1Black}"/>
+		<Setter Property="BorderThickness" Value="4"/>
+		<Setter Property="CornerRadius" Value="16"/>
+		<Setter Property="Foreground" Value="{DynamicResource 1GrayText}"/>
+		<Setter Property="FontSize" Value="{DynamicResource Text48}"/>
+		<Setter Property="FontFamily" Value="{StaticResource Zen}"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="HorizontalContentAlignment" Value="Left"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Style Selector="^:focus">
+			<Style Selector="^ /template/ Border#PART_BorderElement">
+				<Setter Property="Background" Value="{DynamicResource 1WhitePointer}"/>
+				<Setter Property="BorderBrush" Value="{DynamicResource 1Blue}"/>
+				<Setter Property="BorderThickness" Value="4"/>
+
+			</Style>
+			<Setter Property="Foreground" Value="{DynamicResource 1Black}"/>
+		</Style>
+		<Style Selector="^:pointerover">
+			<Style Selector="^ /template/ Border#PART_BorderElement">
+				<Setter Property="Background" Value="{DynamicResource 1WhitePointer}"/>
+				<Setter Property="BorderBrush" Value="{DynamicResource 1Blue}"/>
+			</Style>
+		</Style>
+	</Style>
+
+	<Style Selector="SvgTextBox">
+		<Setter Property="FontFamily" Value="{StaticResource Zen}"/>
+		<Setter Property="FontSize" Value="{DynamicResource Text24}"/>
+		<Setter Property="Foreground" Value="{DynamicResource 1GrayText}"/>
+		<Setter Property="HorizontalAlignment" Value="Stretch"/>
+		<Setter Property="Cursor" Value="IBeam"/>
+		
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="SvgTextBox">
+					<Border x:Name="PART_Border"
+						Background="White"
+						MinHeight="40"
+						MinWidth="{TemplateBinding MinWidth}"
+						Padding="6,0,6,2"
+						CornerRadius="8"
+						BorderThickness="4"
+						Margin="0,0,0,0">
+
+							<StackPanel Orientation="Horizontal">
+								<Svg Width="24" Height="24" Path="{TemplateBinding SvgPath}">
+									<Svg.IsVisible>
+										<Binding Path="SvgPath" RelativeSource="{RelativeSource TemplatedParent}" Converter="{x:Static StringConverters.IsNotNullOrEmpty}"/>
+									</Svg.IsVisible>
+								</Svg>
+								
+								<TextBlock Name="PART_StaticText"
+									  Foreground="{DynamicResource 1Pink}"
+									  FontSize="{DynamicResource Text24}"
+									  Text="{TemplateBinding StaticText}"/>
+								
+								<Grid>
+									<TextPresenter Name="PART_TextPresenter"
+											   VerticalAlignment="Center"
+											   CaretIndex="{TemplateBinding CaretIndex}"
+											   LineHeight="{TemplateBinding LineHeight}"
+											   PasswordChar="{TemplateBinding PasswordChar}"
+											   RevealPassword="{TemplateBinding RevealPassword}"
+											   SelectionBrush="#0438a2"
+											   SelectionEnd="{TemplateBinding SelectionEnd}"
+											   SelectionForegroundBrush="White"
+											   SelectionStart="{TemplateBinding SelectionStart}"
+											   Text="{TemplateBinding Text,Mode=TwoWay}"
+											   TextAlignment="{TemplateBinding TextAlignment}"/>
+
+									<TextBlock Name="PART_Watermark"
+												   Foreground="{DynamicResource 1Gray}"
+												   FontSize="{TemplateBinding FontSize}"
+												   Text="{TemplateBinding Watermark}">
+										<TextBlock.IsVisible>
+											<MultiBinding Converter="{x:Static BoolConverters.And}">
+												<Binding ElementName="PART_TextPresenter" Path="PreeditText" Converter="{x:Static StringConverters.IsNullOrEmpty}"/>
+												<Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Text" Converter="{x:Static StringConverters.IsNullOrEmpty}"/>
+											</MultiBinding>
+										</TextBlock.IsVisible>
+									</TextBlock>
+								</Grid>
+							</StackPanel>
+						
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style Selector="^:focus">
+			<Style Selector="^:focus /template/ Border#PART_Border">
+				<Setter Property="Background" Value="White"/>
+				<Setter Property="BorderBrush" Value="{DynamicResource 1Blue}"/>
+				<Setter Property="BorderThickness" Value="4"/>
+			</Style>
+		</Style>
+		<Style Selector="^:pointerover">
+			<Style Selector="^:pointerover /template/ Border#PART_Border">
+				<Setter Property="Background" Value="White"/>
+				<Setter Property="BorderBrush" Value="{DynamicResource 1Blue}"/>
+				<Setter Property="BorderThickness" Value="4"/>
+			</Style>
+		</Style>
+	</Style>
+
+</Styles>

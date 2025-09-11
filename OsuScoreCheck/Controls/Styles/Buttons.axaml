@@ -1,0 +1,207 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="30" Background="Gray"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch">
+
+			<StackPanel Orientation="Vertical" Spacing="10">
+
+				<Button Classes="Default" Content="test"/>
+				<Button Classes="Default" IsEnabled="False" Content="test"/>
+				<SvgButton SvgPath="\Assets\Svg\Flag\US.svg"
+							  Content="test"/>
+
+				<StackPanel Orientation="Horizontal">
+					<RadioButton Classes="Ico"
+								 Content="\Assets\Svg\NavBtnLeft\List.svg"
+								 GroupName="1"/>
+					<RadioButton Classes="Ico"
+								 Content="\Assets\Svg\NavBtnLeft\List.svg"
+								 GroupName="1"
+								 IsEnabled="False"/>
+
+					<SvgRadioButton Content="osu"
+								 GroupName="Mods"
+								 IsEnabled="True"
+								 InactiveSvgPath="\Assets\Svg\Components\osuOn.svg"
+								 ActiveSvgPath="\Assets\Svg\Components\osuOff.svg"/>
+
+				</StackPanel>
+				
+				<Button Classes="txt24" Content="Test"/>
+				<Button Classes="txt24" Content="Test" IsEnabled="False"/>
+
+			</StackPanel>
+		</Border>
+	</Design.PreviewWith>
+
+	<Style Selector="Button.Default">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Border
+						Background="{DynamicResource 1Black}"
+						CornerRadius="32"
+						Cursor="Hand"
+						Height="90"
+						MinWidth="300"
+						Padding="16,0,16,16">
+						<Label Content="{TemplateBinding Content}"
+							   MinWidth="160"
+							   HorizontalContentAlignment="Center" />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style Selector="^:disabled">
+			<Setter Property="Background" Value="{DynamicResource 1Black}"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Opacity" Value="0.7"/>
+		</Style>
+	</Style>
+	
+	<Style Selector="SvgButton">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="SvgButton">
+					<Border
+						Background="{DynamicResource 1Black}"
+						CornerRadius="32"
+						Cursor="Hand"
+						Height="90"
+						MinWidth="300"
+						Padding="16,0,16,16">
+						<StackPanel Spacing="16"
+							Orientation="Horizontal"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Bottom">
+							<Border Padding="0,8,0,0">
+								<Svg Width="64" Height="64"
+									 Path="{TemplateBinding SvgPath}"/>
+							</Border>
+							<Label Content="|"/>
+
+							<Label Content="{TemplateBinding Content}"
+								   MinWidth="140"
+								   HorizontalContentAlignment="Center" />
+
+						</StackPanel>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style Selector="^:pressed">
+			<Setter Property="RenderTransform" Value="scale(0.98)" />
+		</Style>
+	</Style>
+
+	<Style Selector="RadioButton.Ico">
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="MaxHeight" Value="90"/>
+		<Setter Property="MaxWidth" Value="64"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+		<Setter Property="VerticalContentAlignment" Value="Stretch"/>
+		<Setter Property="Opacity" Value="10000"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="RadioButton">
+					<StackPanel Spacing="0,0,0,8">
+						<Grid>
+							<Rectangle
+						   Width="64" Height="64" ZIndex="1"
+						   Fill="{DynamicResource 1Purple}"
+						   Opacity="{TemplateBinding Opacity}"/>
+							<Svg Width="64"
+							 Height="64"
+							 Path="{TemplateBinding Content}"/>
+						</Grid>
+						<Border x:Name="Indicator"
+						   Width="32"
+						   Height="10"
+						   CornerRadius="5"
+						   Background="{DynamicResource 1Green}"
+						   IsVisible="{TemplateBinding IsChecked}"/>
+					</StackPanel>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style Selector="^:disabled">
+			<Setter Property="Opacity" Value="0.7"/>
+		</Style>
+	</Style>
+
+	<Style Selector="SvgRadioButton">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="SvgRadioButton">
+					<StackPanel Spacing="-8" HorizontalAlignment="Center">
+						<Grid>
+							<!-- Inactive icon виден, когда НЕ выбран -->
+							<Svg x:Name="InactiveIcon"
+								 Path="{TemplateBinding InactiveSvgPath}"
+								 Width="24"
+								 Height="24"
+								 IsVisible="{Binding !IsChecked, RelativeSource={RelativeSource TemplatedParent}}" />
+
+							<!-- Active icon виден, когда выбран -->
+							<Svg x:Name="ActiveIcon"
+								 Path="{TemplateBinding ActiveSvgPath}"
+								 Width="24"
+								 Height="24"
+								 IsVisible="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}" />
+						</Grid>
+
+						<TextBlock x:Name="ModeText"
+								   Text="{TemplateBinding Content}"
+								   FontSize="{DynamicResource Text20}"
+								   HorizontalAlignment="Center"/>
+					</StackPanel>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+	<Style Selector="Button.txt24">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Border
+						Background="Transparent"
+						CornerRadius="8"
+						Cursor="Hand"
+						Height="40"
+						Padding="8,-4,8,0"
+					    BorderThickness="2"
+						BorderBrush="White">
+						<Label Content="{TemplateBinding Content}"
+							   FontSize="{DynamicResource Text24}"
+							   HorizontalContentAlignment="Center"
+							   Foreground="White"/>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style Selector="^:pressed">
+			<Setter Property="RenderTransform" Value="scale(0.90)" />
+		</Style>
+		<Style Selector="^:disabled /template/ Border">
+			<Setter Property="BorderBrush" Value="{DynamicResource 1Black}"/>
+		</Style>
+	</Style>
+
+	<Style Selector="Button">
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="Background" Value="Transparent"/>
+	</Style>
+
+	<Style Selector="Button:pointerover /template/ ContentPresenter">
+		<Setter Property="Background" Value="Transparent"/>
+	</Style>
+
+	<Style Selector="ToggleButton">
+		<Setter Property="Cursor" Value="Hand"/>
+	</Style>
+
+</Styles>

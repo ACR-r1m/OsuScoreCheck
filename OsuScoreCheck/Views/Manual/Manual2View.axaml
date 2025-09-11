@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="700"
+             x:Class="OsuScoreCheck.Views.Manual2View"
+			 Background="{DynamicResource 1Pink}"
+			 x:DataType="Manual2ViewModel">
+
+	<UserControl.DataContext>
+		<Manual2ViewModel/>
+	</UserControl.DataContext>
+
+	<Grid HorizontalAlignment="Stretch"
+		  RowDefinitions="Auto,*,Auto">
+		
+		<Border Grid.Row="0" Padding="0,16,0,16" HorizontalAlignment="Stretch">
+				<TextBlock Text="{Localize RegisterNewApp}"
+						   TextWrapping="Wrap"
+						   TextAlignment="Center"
+						   HorizontalAlignment="Stretch"/>
+		</Border>
+
+		<Border Grid.Row="1" Padding="16">
+			<Image Source="avares://OsuScoreCheck/Assets/ManualImages/image2.png" Width="600"/>
+		</Border>
+
+		<Border Grid.Row="2" Padding="16">
+			<StackPanel Orientation="Horizontal" Spacing="16" HorizontalAlignment="Center">
+				<Button Classes="Default"
+						Content="{Localize Back}"
+						Command="{Binding NavigateCommand}"
+						CommandParameter="{x:Type Manual1ViewModel}"/>
+				<Button Classes="Default"
+						Content="{Localize Next}"
+						Command="{Binding NavigateCommand}"
+						CommandParameter="{x:Type Manual3ViewModel}"/>
+			</StackPanel>
+		</Border>
+	</Grid>
+	
+</UserControl>

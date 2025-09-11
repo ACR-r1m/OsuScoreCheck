@@ -1,0 +1,84 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Background="Gray" MinHeight="500"> 
+			<StackPanel VerticalAlignment="Bottom" Spacing="20">
+
+				<Border Classes="LoadingDown"
+									Width="100" Height="100"
+									Background="Red"/>
+				
+				<Rectangle Classes="Animation"
+						   Width="64" Height="64"
+						   Fill="Black"/>
+
+				<Border Classes="Loading" Width="64" Height="64">
+					<Svg Path="\Assets\Svg\Animation\Loading.svg"/>
+				</Border>
+
+				<Border Classes="LoadingUp"
+									Width="100" Height="100"
+									Background="AliceBlue"/>
+				
+			</StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+	<Style Selector="Rectangle.Animation">
+		<Style.Animations>
+			<Animation Duration="0:0:3" FillMode="Forward">
+				<KeyFrame Cue="0%">
+					<Setter Property="Opacity" Value="1.0"/>
+				</KeyFrame>
+				<KeyFrame Cue="100%">
+					<Setter Property="Opacity" Value="0.4"/>
+				</KeyFrame>
+			</Animation>
+		</Style.Animations>
+	</Style>
+
+	<Style Selector="Border.Loading">
+		<Style.Animations>
+			<Animation Duration="0:0:1" IterationCount="INFINITE">
+				<KeyFrame>
+					<Setter Property="RotateTransform.Angle" Value="0.0"/>
+				</KeyFrame>
+				<KeyFrame>
+					<Setter Property="RotateTransform.Angle" Value="360.0"/>
+				</KeyFrame>
+			</Animation>
+		</Style.Animations>
+	</Style>
+	
+	<Style Selector="Border.LoadingUp">
+		<Style.Animations>
+			<Animation Duration="0:0:2"
+					   FillMode="Forward"
+				       Easing="CubicEaseInOut">
+				<KeyFrame Cue="0%">
+					<Setter Property="TranslateTransform.Y" Value="0" />
+				</KeyFrame>
+				<KeyFrame Cue="100%">
+					<Setter Property="TranslateTransform.Y" Value="-800" />
+				</KeyFrame>
+			</Animation>
+		</Style.Animations>
+	</Style>
+
+	<Style Selector="Border.LoadingDown">
+		<Style.Animations>
+			<Animation Duration="0:0:2"
+					   FillMode="Forward"
+					   PlaybackDirection="Reverse"
+				       Easing="CubicEaseInOut">
+				<KeyFrame Cue="0%">
+					<Setter Property="TranslateTransform.Y" Value="+0" />
+				</KeyFrame>
+				<KeyFrame Cue="100%">
+					<Setter Property="TranslateTransform.Y" Value="-800" />
+				</KeyFrame>
+			</Animation>
+		</Style.Animations>
+	</Style>
+	
+</Styles>

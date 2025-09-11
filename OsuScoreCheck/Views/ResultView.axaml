@@ -1,0 +1,200 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="700"
+             x:Class="OsuScoreCheck.Views.ResultView"
+			 Background="{DynamicResource 1Pink}"
+			 x:DataType="ResultViewModel">
+	
+	<Grid RowDefinitions="auto, *" Margin="8,8,8,8">
+		
+		<Border Background="{DynamicResource 1Black}"
+				CornerRadius="8" 
+				MinHeight="55" 
+				VerticalAlignment="Top" 
+				HorizontalAlignment="Stretch">
+			<StackPanel Orientation="Vertical"
+								  Spacing="2"  
+								  Margin="6">
+				
+				<Border>
+					<SvgTextBox Classes="txt24"
+							SvgPath="\Assets\Svg\Components\Search24.svg"
+							Watermark="{Localize TitleOrDifficulty}"
+							Text="{Binding NameFilter}"
+							HorizontalAlignment="Stretch"/>
+				</Border>
+
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<ComboFilter HeaderText="{Localize Mods}"
+							 GroupName="Filters">
+						<ComboFilter.PopupContent>
+							<StackPanel>
+								<StackPanel.Styles>
+									<Style Selector="CheckBox">
+										<Setter Property="HorizontalAlignment" Value="Stretch"/>
+									</Style>
+								</StackPanel.Styles>
+								<CheckBox Classes="FilterElement" Content="EZ" IsChecked="{Binding IsEZChecked}"/>
+								<CheckBox Classes="FilterElement" Content="NF" IsChecked="{Binding IsNFChecked}"/>
+								<CheckBox Classes="FilterElement" Content="HT" IsChecked="{Binding IsHTChecked}"/>
+								<CheckBox Classes="FilterElement" Content="HR" IsChecked="{Binding IsHRChecked}"/>
+								<CheckBox Classes="FilterElement" Content="SD/PF" IsChecked="{Binding IsSDChecked}"/>
+								<CheckBox Classes="FilterElement" Content="DT/NC" IsChecked="{Binding IsDTChecked}"/>
+								<CheckBox Classes="FilterElement" Content="HD" IsChecked="{Binding IsHDChecked}"/>
+								<CheckBox Classes="FilterElement" Content="FL" IsChecked="{Binding IsFLChecked}"/>
+							</StackPanel>
+						</ComboFilter.PopupContent>
+					</ComboFilter>
+
+					<ComboFilter HeaderText="{Localize Result}"
+								 GroupName="Filters"
+								 SortGroupName="SortGroup"
+								 IsSortButtonVisible="True"
+								 Tag="Result">
+						<ComboFilter.PopupContent>
+							<StackPanel>
+								<StackPanel.Styles>
+									<Style Selector="CheckBox">
+										<Setter Property="HorizontalAlignment" Value="Stretch"/>
+									</Style>
+								</StackPanel.Styles>
+								<CheckBox Classes="FilterElement" Content="SS" IsChecked="{Binding IsSSChecked}"/>
+								<CheckBox Classes="FilterElement" Content="S" IsChecked="{Binding IsSChecked}"/>
+								<CheckBox Classes="FilterElement" Content="A" IsChecked="{Binding IsAChecked}"/>
+								<CheckBox Classes="FilterElement" Content="B" IsChecked="{Binding IsBChecked}"/>
+								<CheckBox Classes="FilterElement" Content="C" IsChecked="{Binding IsCChecked}"/>
+								<CheckBox Classes="FilterElement" Content="D" IsChecked="{Binding IsDChecked}"/>
+							</StackPanel>
+						</ComboFilter.PopupContent>
+						
+						
+					</ComboFilter>
+
+					<ComboFilter OneIcon="\Assets\Svg\Components\Time.svg"
+								 GroupName="Filters"
+								 SortGroupName="SortGroup"
+								 IsSortButtonVisible="True"
+								 Tag="Time">
+						<ComboFilter.PopupContent>
+							<StackPanel>
+								<SvgTextBox StaticText="{Localize from}"
+											Text="{Binding MinTimePlayed}"/>
+								<SvgTextBox StaticText="{Localize to}"
+											Text="{Binding MaxTimePlayed}"/>
+							</StackPanel>
+						</ComboFilter.PopupContent>
+					</ComboFilter>
+
+					<ComboFilter OneIcon="\Assets\Svg\Components\Star.svg"
+								 GroupName="Filters"
+								 SortGroupName="SortGroup"
+								 IsSortButtonVisible="True"
+								 Tag="Star">
+						<ComboFilter.PopupContent>
+							<StackPanel>
+								<SvgTextBox StaticText="{Localize from}"
+											Text="{Binding MinStarRating}"/>
+								<SvgTextBox StaticText="{Localize to}"
+											Text="{Binding MaxStarRating}"/>
+							</StackPanel>
+						</ComboFilter.PopupContent>
+					</ComboFilter>
+
+					<ComboFilter OneIcon="\Assets\Svg\Components\PP.svg"
+								 GroupName="Filters"
+								 SortGroupName="SortGroup"
+								 IsSortButtonVisible="True"
+								 Tag="PP">
+						<ComboFilter.PopupContent>
+							<StackPanel>
+								<StackPanel>
+									<SvgTextBox StaticText="{Localize from}"
+												Text="{Binding MinPP}"/>
+									<SvgTextBox StaticText="{Localize to}"
+												Text="{Binding MaxPP}"/>
+								</StackPanel>
+							</StackPanel>
+						</ComboFilter.PopupContent>
+					</ComboFilter>
+
+					<ComboFilter HeaderText="{Localize MapStatus}"
+								 GroupName="Filters">
+						<ComboFilter.PopupContent>
+							<StackPanel>
+								<StackPanel.Styles>
+									<Style Selector="CheckBox">
+										<Setter Property="HorizontalAlignment" Value="Stretch"/>
+									</Style>
+								</StackPanel.Styles>
+								<CheckBox Classes="FilterElement" Content="Ranked" IsChecked="{Binding IsRanked}"/>
+								<CheckBox Classes="FilterElement" Content="Qualified" IsChecked="{Binding IsQualified}"/>
+								<CheckBox Classes="FilterElement" Content="Loved" IsChecked="{Binding IsLoved}"/>
+								<CheckBox Classes="FilterElement" Content="Unranked" IsChecked="{Binding IsUnranked}"/>
+							</StackPanel>
+						</ComboFilter.PopupContent>
+					</ComboFilter>
+				</StackPanel>
+			</StackPanel>
+		</Border>
+		
+		<Grid Grid.Row="1">
+
+			<Border ZIndex="1"
+                    CornerRadius="16"
+                    Background="{DynamicResource 1WhitePointer}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Padding="32"
+                    IsVisible="{Binding IsContextMenuVisible}">
+				<StackPanel Spacing="8">
+					<Button Classes="Default"
+                            Content="{Localize Refresh}"
+                            Command="{Binding RefreshMapCommand}"
+                            CommandParameter="{Binding SelectedBeatmap}"/>
+					<Button Classes="Default"
+                            Content="{Localize Back}"
+                            Command="{Binding CloseContextMenuCommand}"/>
+				</StackPanel>
+			</Border>
+			
+			<ScrollViewer AllowAutoHide="False" Margin="0,8,0,0"
+				ScrollChanged="OnScrollChanged">
+				<ItemsControl x:Name="MapsItemsControl"
+							  ItemsSource="{Binding Maps}">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel HorizontalAlignment="Center"/>
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<OsuMapInfo
+								LeftClickHandler.IsEnabled="True"
+								LeftClickHandler.Command="{Binding $parent[ItemsControl].((ResultViewModel)DataContext).OpenMapCommand}"
+								LeftClickHandler.CommandParameter="{Binding}"
+								RightClickHandler.IsEnabled="True"
+                                RightClickHandler.Command="{Binding $parent[ItemsControl].((ResultViewModel)DataContext).ShowContextMenuCommand}"
+                                RightClickHandler.CommandParameter="{Binding}"
+								PP="{Binding PP}"
+								Mods="{Binding Mods}"
+								Diff="{Binding Difficulty}"
+								Time="{Binding TimePlayed}"
+								Star="{Binding StarRating}"
+								Title="{Binding BeatmapName}"
+								Result="{Binding Result.Name}"
+								BackgroundImage="{Binding BackgroundImage}"
+								SimplifiedCategory="{Binding SimplifiedCategory.Name}"/>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+					<ItemsControl.Styles>
+						<Style Selector="OsuMapInfo">
+							<Setter Property="Margin" Value="0,8,8,0" />
+						</Style>
+					</ItemsControl.Styles>
+				</ItemsControl>
+			</ScrollViewer>
+		</Grid>
+	</Grid>
+</UserControl>

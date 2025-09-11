@@ -1,0 +1,149 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="700"
+             x:Class="OsuScoreCheck.Views.UsersView"
+			 Background="{DynamicResource 1Pink}"
+			 x:DataType="UsersViewModel">
+
+	<UserControl.DataContext>
+		<UsersViewModel/>
+	</UserControl.DataContext>
+
+	<Grid Margin="8">
+		<TextBlock Text="{Localize ResultApi}" 
+				   HorizontalAlignment="Center"
+				   VerticalAlignment="Center"
+				   IsVisible="{Binding IsUsersEmpty}"/>
+		
+		<Grid RowDefinitions="auto,*">
+			<Border Background="{DynamicResource 1Black}"
+					CornerRadius="8" MaxHeight="55" 
+					VerticalAlignment="Top" Grid.Row="0">
+				<StretchingStackPanel Orientation="Horizontal"
+								  Spacing="8" Margin="8"
+								  OverflowBehavior="SingleRow">
+					<SvgTextBox Classes="txt24"
+								SvgPath="\Assets\Svg\Components\Search24.svg"
+								Height="40"
+								Watermark="{Localize SearchIdUser}"
+								HorizontalAlignment="Stretch"
+								Text="{Binding UserIdInput}"/>
+
+					<StackPanel Orientation="Horizontal" 
+								HorizontalAlignment="Right"
+								VerticalAlignment="Stretch" 
+								Margin="8,0,8,0">
+						
+						<SvgRadioButton GroupName="GameModeGroup"
+										Content="osu"
+										IsChecked="True"
+										Command="{Binding SelectGameModeCommand}"
+										CommandParameter="osu"
+										InactiveSvgPath="\Assets\Svg\Components\osuOff.svg"
+										ActiveSvgPath="\Assets\Svg\Components\osuOn.svg"
+										Margin="10,0,10,0"/>
+
+						<SvgRadioButton GroupName="GameModeGroup"
+										Content="taiko"
+										Command="{Binding SelectGameModeCommand}"
+										CommandParameter="taiko"
+										InactiveSvgPath="\Assets\Svg\Components\taikoOff.svg"
+										ActiveSvgPath="\Assets\Svg\Components\taikoOn.svg"
+										Margin="10,0,10,0"/>
+
+						<SvgRadioButton GroupName="GameModeGroup"
+										Content="catch"
+										Command="{Binding SelectGameModeCommand}"
+										CommandParameter="fruits"
+										InactiveSvgPath="\Assets\Svg\Components\catchOff.svg"
+										ActiveSvgPath="\Assets\Svg\Components\catchOn.svg"
+										Margin="10,0,10,0"/>
+
+						<SvgRadioButton GroupName="GameModeGroup"
+										Content="mania"
+										Command="{Binding SelectGameModeCommand}"
+										CommandParameter="mania"
+										InactiveSvgPath="\Assets\Svg\Components\maniaOff.svg"
+										ActiveSvgPath="\Assets\Svg\Components\maniaOn.svg"
+										Margin="10,0,10,0"/>
+						
+					</StackPanel>
+
+
+					<Button Classes="txt24"
+							Content="{Localize Analysis}"
+							HorizontalAlignment="Right"
+							Command="{Binding AnalyzeUserCommand}"/>
+				</StretchingStackPanel>
+			</Border>
+
+			<Grid Grid.Row="1">
+
+				<Border ZIndex="1"
+						CornerRadius="16"
+						Background="{DynamicResource 1WhitePointer}"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Padding="32"
+						IsVisible="{Binding IsContextMenuVisible}">
+					<StackPanel Spacing="8">
+						<Button Classes="Default"
+								Content="{Localize Profile}"
+								Command="{Binding OpenLinkProfileCommand}"/>
+						<Button Classes="Default" 
+								Content="{Localize UserDelite}"
+								Command="{Binding DeleteUserCommand}"/>
+						<Button Classes="Default" 
+								Content="{Localize Back}"
+								Command="{Binding HideContextMenuCommand}"/>
+					</StackPanel>
+				</Border>
+
+				<Grid RowDefinitions="auto, *">
+					
+					<TextBlock Grid.Row="0" Text="{Binding ErrorMessage}"
+					   TextWrapping="Wrap"
+					   TextAlignment="Center"
+				       HorizontalAlignment="Stretch"
+				       IsVisible="{Binding IsErrorVisible}"/>
+					
+					<ScrollViewer AllowAutoHide="False"
+								  Margin="0,8,0,0" Grid.Row="1" >
+						<ItemsControl x:Name="UsersItemsControl"
+									  ItemsSource="{Binding Users}">
+							<ItemsControl.ItemsPanel>
+								<ItemsPanelTemplate>
+									<WrapPanel />
+								</ItemsPanelTemplate>
+							</ItemsControl.ItemsPanel>
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<UserInfo RightClickHandler.IsEnabled="True"
+											  RightClickHandler.Command="{Binding $parent[ItemsControl].((UsersViewModel)DataContext).UserRightClickCommand}"
+											  RightClickHandler.CommandParameter="{Binding Id}" 
+											  Username="{Binding Username}"
+											  AvatarUrl="{Binding AvatarUrl}"
+											  TotalPlayedMaps="{Binding TotalPlayedMaps}"
+											  LastCheckedMapId="{Binding LastCheckedMapId}"
+											  FirstAnalysisTime="{Binding CreatedAt, StringFormat=' {0:dd.MM.yyyy HH:mm}'}"
+											  Command="{Binding $parent[ItemsControl].((UsersViewModel)DataContext).SelectUserCommand}}"
+											  CommandParameter="{Binding Id}"
+											  IsLoading="{Binding IsLoading}"/>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+							<ItemsControl.Styles>
+								<Style Selector="UserInfo">
+									<Setter Property="Margin" Value="0,4,4,0" />
+								</Style>
+							</ItemsControl.Styles>
+						</ItemsControl>
+					</ScrollViewer>
+				</Grid>
+
+			</Grid>
+		</Grid>
+	</Grid>
+	
+</UserControl>

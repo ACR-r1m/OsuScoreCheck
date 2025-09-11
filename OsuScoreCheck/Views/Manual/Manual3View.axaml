@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="700"
+			 x:Class="OsuScoreCheck.Views.Manual3View"
+			 Background="{DynamicResource 1Pink}"
+			 x:DataType="Manual3ViewModel">
+
+	<UserControl.DataContext>
+		<Manual3ViewModel/>
+	</UserControl.DataContext>
+
+	<Grid HorizontalAlignment="Stretch"
+		  RowDefinitions="Auto,*,Auto">
+		
+		<Border Grid.Row="0" Padding="">
+			<StackPanel Spacing="16">
+				<TextBlock Text="{Localize EnterData}"
+						   TextWrapping="Wrap"
+						   TextAlignment="Center"
+						   HorizontalAlignment="Stretch"/>
+			</StackPanel>
+		</Border>
+
+		<Border Grid.Row="1" Padding="16">
+			<Image Source="avares://OsuScoreCheck/Assets/ManualImages/image3.png" Width="600" />
+		</Border>
+
+		<Border Grid.Row="2" Padding="16">
+			<StackPanel Spacing="16">
+				<StackPanel Orientation="Horizontal" Spacing="16" HorizontalAlignment="Center">
+					<TextBox Classes="txt48" 
+							 Watermark="{Localize ID}" 
+							 MaxWidth="300"
+							 Text="{Binding ClientId}"/>
+					<TextBox Classes="txt48" 
+							 Watermark="{Localize Key}" 
+							 MaxWidth="300"
+							 Text="{Binding ClientSecret}"/>
+				</StackPanel>
+
+				<StackPanel Orientation="Horizontal" Spacing="16" HorizontalAlignment="Center">
+					<Button Classes="Default"
+							Content="{Localize Back}"
+							Command="{Binding NavigateCommand}"
+							CommandParameter="{x:Type Manual2ViewModel}"/>
+					<Button Classes="Default"
+							Content="{Localize Next}"
+							IsEnabled="{Binding IsButtonEnabled}"
+							Command="{Binding GetAccessTokenCommand}">
+					</Button>
+				</StackPanel>
+			</StackPanel>
+		</Border>
+
+	</Grid>
+	
+</UserControl>

@@ -1,0 +1,51 @@
+{
+  //Btn
+  "Back": "Back",
+  "Next": "Next",
+  "Help": "Help",
+  //Manual1View
+  "SelectLanguage": "Select language",
+  "Russian": "Русский",
+  "English": "English",
+  "GoToLink1": "Go to the ",
+  "GoToLink2": "link",
+  "GoToLink3": ", find the OAuth section, and click the button.",
+  //Manual2View
+  "RegisterNewApp": "Register a new application, name it anything you like",
+  //Manual3View
+  "EnterData": "Enter data (click show key to copy):",
+  "ID": "id",
+  "Key": "key",
+  //ManualChekingView
+  "VerificationApi": "The data is correct!",
+  "VerificationNoApi": "The data is incorrect!",
+  //UsersView
+  "ResultApi": "There are no records of the results...",
+  "SearchIdUser": "id user",
+  "Analysis": "Analyze",
+  "InvalidUserId": "Enter a valid user ID.",
+  "ApiNotSaved": "API is not saved, please follow the manual again!",
+  "AccessTokenError": "Failed to obtain an access token. There might be an issue with the API.",
+  "UserNotFound": "User not found!",
+  "UserIsLoading": "The user's maps are still being analyzed. Please wait.",
+  "Profile": "Profile",
+  "MapStatus": "Status",
+  "UserDelite": "Delite",
+  //ResultView
+  "TitleOrDifficulty": "Title/Difficulty",
+  "Result": "Result",
+  "Mods": "Mods",
+  "Refresh": "Refresh",
+  "NoInternetConnection": "No internet connection",
+  "HttpError": "HTTP error. Wait a bit and try again.",
+  "NetworkError": "osu! server not responding. Check internet or server status.",
+  "UnknownError": "An unknown error occurred:",
+  "Timeout": "Server response timeout.",
+  //UserInfo
+  "Recorded": "Recorded:",
+  "PlayedMaps": "Played maps:",
+  "viewed": "maps out of",
+  //ComboFilter
+  "from": "from:",
+  "to": "to:"
+}

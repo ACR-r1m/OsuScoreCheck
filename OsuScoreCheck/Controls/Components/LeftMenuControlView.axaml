@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="100" d:DesignHeight="330"
+             x:Class="OsuScoreCheck.Controls.Components.LeftMenuControlView"
+			 x:DataType="LeftMenuControlViewModel">
+
+	<UserControl.DataContext>
+		<LeftMenuControlViewModel/>
+	</UserControl.DataContext>
+	
+	<Border Padding="0,40,0,40"
+			CornerRadius="0,0,32,32"
+			Background="{DynamicResource 1Purple}"
+			Width="100"
+			Height="330">
+		<StackPanel HorizontalAlignment="Center"
+					Spacing="0,0,0,16">
+
+			<RadioButton Classes="Ico"
+						 GroupName="NavigationGroup"
+						 Content="\Assets\Svg\NavBtnLeft\List.svg"
+						 Command="{Binding NavigateCommand}"
+						 CommandParameter="{x:Type UsersViewModel}"
+						 IsEnabled="{Binding IsEnabled}"
+						 IsChecked="{Binding IsButton1Checked, Mode=TwoWay}"/>
+			
+			<RadioButton Classes="Ico"
+						 Content="\Assets\Svg\NavBtnLeft\Pin.svg"
+						 GroupName="NavigationGroup"
+						 Command="{Binding NavigateCommand}"
+						 CommandParameter="{x:Type SocialLinksViewModel}"
+						 IsChecked="{Binding IsButton2Checked, Mode=TwoWay}"/>
+
+			<RadioButton Classes="Ico"
+						 Content="\Assets\Svg\NavBtnLeft\Settings.svg"
+						 GroupName="NavigationGroup"
+						 Command="{Binding NavigateCommand}"
+						 CommandParameter="{x:Type Manual1ViewModel}"
+						 IsChecked="{Binding IsButton3Checked, Mode=TwoWay}"/>
+			
+		</StackPanel>
+	</Border>
+
+</UserControl>

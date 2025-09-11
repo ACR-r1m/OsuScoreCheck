@@ -1,0 +1,62 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="700"
+             x:Class="OsuScoreCheck.Views.Manual1View"
+			 Background="{DynamicResource 1Pink}"
+			 x:DataType="Manual1ViewModel">
+
+	<UserControl.DataContext>
+		<Manual1ViewModel/>
+	</UserControl.DataContext>
+
+	<Grid VerticalAlignment="Top" HorizontalAlignment="Stretch">
+		<Border Padding="16">
+			<StackPanel Spacing="16">
+				<Label Content="{Localize SelectLanguage}"/>
+
+				<StackPanel Orientation="Horizontal" Spacing="16" HorizontalAlignment="Center">
+					
+					<SvgButton SvgPath="\Assets\Svg\Flag\RU.svg"
+							Content="{Localize Russian}"
+							Command="{Binding ChangeLanguageCommand, Mode=OneTime}"
+							CommandParameter="ru"/>
+
+					<SvgButton SvgPath="\Assets\Svg\Flag\US.svg"
+							Content="{Localize English}"
+							Command="{Binding ChangeLanguageCommand, Mode=OneTime}"
+							CommandParameter="en"/>
+
+				</StackPanel>
+				
+					<Button Command="{Binding OpenLinkCommand}"
+							HorizontalAlignment="Stretch">
+						<TextBlock TextWrapping="WrapWithOverflow"
+								   TextAlignment="Center"
+								   HorizontalAlignment="Stretch"
+								   Cursor="Hand">
+							<Run Text="{Localize GoToLink1}"/>
+							<Run Text="{Localize GoToLink2}"
+								 Foreground="Black"
+								 TextDecorations="Underline"/>
+							<Run Text="{Localize GoToLink3}"/>
+						</TextBlock>
+					</Button>
+
+				<Image Source="avares://OsuScoreCheck/Assets/ManualImages/image1.png" Width="600"/>
+
+				<StackPanel Orientation="Horizontal" Spacing="16" HorizontalAlignment="Center">
+					<Button Classes="Default"
+							Content="{Localize Help}"/>
+					<Button Classes="Default"
+							Content="{Localize Next}"
+							Command="{Binding NavigateCommand}"
+							CommandParameter="{x:Type Manual2ViewModel}"/>
+				</StackPanel>
+
+			</StackPanel>
+		</Border>
+	</Grid>
+
+</UserControl>

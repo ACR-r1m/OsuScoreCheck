@@ -1,0 +1,121 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="clr-namespace:OsuScoreCheck.Controls.Components;assembly=OsuScoreCheck"
+        xmlns:converters="clr-namespace:OsuScoreCheck.Converters;assembly=OsuScoreCheck">
+  <Design.PreviewWith>
+	  <StackPanel Width="200" Height="150" Background="Black">
+		  <ComboFilter OneIcon="\Assets\Svg\Components\Time.svg"
+					   HeaderText="Фильтр"
+					   HorizontalAlignment="Center"
+					   IsSortButtonVisible="True"
+					   GroupName="Filters">
+			  <ComboFilter.PopupContent>
+				  <StackPanel>
+					  <SvgTextBox StaticText="{Localize from}"/>
+					  <SvgTextBox StaticText="{Localize to}"/>
+				  </StackPanel>
+			  </ComboFilter.PopupContent>
+		  </ComboFilter>
+	  </StackPanel>
+
+  </Design.PreviewWith>
+
+  <Style Selector="ComboFilter">
+    <!-- Set Defaults -->
+    <Setter Property="Template">
+      <ControlTemplate>
+		  <Grid>
+			  <!-- Кнопка для открытия/закрытия Popup -->
+			  <Button Name="PART_ToggleButton"
+					  HorizontalAlignment="Left"
+					  VerticalAlignment="Top"
+					  Margin="0"
+					  Padding="0">
+				  <Border Background="White"
+						  MinHeight="40"
+						  MinWidth="{TemplateBinding MinWidth}"
+						  Padding="4,0,4,2"
+						  CornerRadius="8"
+						  BorderThickness="4">
+					  <StackPanel Orientation="Horizontal">
+						  <!-- Иконка слева -->
+						  <Grid Margin="0,0,0,-4">
+							  <Svg Path="{TemplateBinding OneIcon}" Width="24" Height="24">
+								  <Svg.IsVisible>
+									  <Binding Path="OneIcon" RelativeSource="{RelativeSource TemplatedParent}" Converter="{x:Static StringConverters.IsNotNullOrEmpty}"/>
+								  </Svg.IsVisible>
+							  </Svg>
+						  </Grid>
+
+						  <!-- Заголовок -->
+						  <TextBlock Text="{TemplateBinding HeaderText}"
+									 Foreground="{DynamicResource 1GrayText}"
+									 FontSize="{DynamicResource Text24}"/>
+
+						  <!-- Кнопка сортировки -->
+						  <Button Name="PART_SortButton"
+                        Margin="-6,0,-12,-6"
+                        Background="Transparent"
+                        Cursor="Hand"
+                        IsVisible="{TemplateBinding IsSortButtonVisible}"
+						Tag="{TemplateBinding Tag}">		  
+							  <Grid>
+								  <!-- Иконка для None -->
+								  <Svg x:Name="SortNoneIcon"
+									   Width="22" Height="22"
+									   Path="{TemplateBinding SortNoneIconPath}"
+									   IsVisible="False">
+									  <Svg.Styles>
+										  <Style Selector="ComboFilter[SortDirection=None] Svg#SortNoneIcon">
+											  <Setter Property="IsVisible" Value="True"/>
+										  </Style>
+									  </Svg.Styles>
+								  </Svg>
+
+								  <!-- Иконка для Ascending -->
+								  <Svg x:Name="SortAscendingIcon"
+									   Width="22" Height="22"
+									   Path="{TemplateBinding SortAscendingIconPath}"
+									   IsVisible="False">
+									  <Svg.Styles>
+										  <Style Selector="ComboFilter[SortDirection=Ascending] Svg#SortAscendingIcon">
+											  <Setter Property="IsVisible" Value="True"/>
+										  </Style>
+									  </Svg.Styles>
+								  </Svg>
+
+								  <!-- Иконка для Descending -->
+								  <Svg x:Name="SortDescendingIcon"
+									   Width="22" Height="22"
+									   Path="{TemplateBinding SortDescendingIconPath}"
+									   IsVisible="False">
+									  <Svg.Styles>
+										  <Style Selector="ComboFilter[SortDirection=Descending] Svg#SortDescendingIcon">
+											  <Setter Property="IsVisible" Value="True"/>
+										  </Style>
+									  </Svg.Styles>
+								  </Svg>
+							  </Grid>
+						  </Button>
+
+						  <!-- Иконка DropDown -->
+						  <Svg Path="\Assets\Svg\Components\DropDown32.svg" Width="24" Height="24"/>
+					  </StackPanel>
+				  </Border>
+			  </Button>
+
+			  <!-- Popup с содержимым -->
+			  <Popup Name="PART_FilterPopup"
+					 PlacementTarget="{Binding ElementName=PART_ToggleButton}"
+					 PlacementMode="Bottom"
+					 IsOpen="{TemplateBinding IsPopupOpen}"
+					 MinWidth="{Binding #PART_ToggleButton.Bounds.Width}">
+				  <Border Background="Transparent" CornerRadius="8" Padding="8">
+					  <ContentPresenter Content="{TemplateBinding PopupContent}" />
+				  </Border>
+			  </Popup>
+		  </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

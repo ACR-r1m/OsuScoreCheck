@@ -1,0 +1,52 @@
+{
+  //Btn
+  "Back": "Назад",
+  "Next": "Далее",
+  "Help": "Помощь",
+  //Manual1View
+  "SelectLanguage": "Выберите язык",
+  "Russian": "Русский",
+  "English": "English",
+  "GoToLink1": "Перейдите по ",
+  "GoToLink2": "ссылке",
+  "GoToLink3": ", найдите раздел OAuth, кликаем по кнопке.",
+  //Manual2View
+  "RegisterNewApp": "Регистрируем новое приложение, называем как угодно.",
+  //Manual3View
+  "EnterData": "Ввод данных (нажмите показать ключ, чтобы скопировать):",
+  "ID": "id",
+  "Key": "ключ",
+  //ManualChekingView
+  "VerificationApi": "Данные верны!",
+  "VerificationNoApi": "Данные неверны!",
+  //UsersView
+  "ResultApi": "Нет записей Результатов...",
+  "SearchIdUser": "id пользователя",
+  "Analysis": "Анализ",
+  "InvalidUserId": "Введите корректный ID пользователя.",
+  "ApiNotSaved": "API не сохранён, пройдите мануал заново!",
+  "AccessTokenError": "Не удалось получить токен доступа. Возможно проблема с API.",
+  "UserNotFound": "Пользователь не найден.",
+  "UserIsLoading": "Карты пользователя всё ещё анализируются. Пожалуйста, подождите.",
+  "Profile": "Профиль",
+  "MapStatus": "Статус",
+  "UserDelite": "Удалить",
+  //ResultView
+  "TitleOrDifficulty": "Тайтл/сложность",
+  "Result": "Результат",
+  "Mods": "Моды",
+  "Refresh": "Обновить",
+  //ErrorView
+  "NoInternetConnection": "Нет подключения к интернету",
+  "HttpError": "Ошибка HTTP, Подождите немного и попробуйте снова.",
+  "NetworkError": "Сервер osu! не отвечает. Возможно, проблемы с интернетом или сервер недоступен.",
+  "UnknownError": "Произошла неизвестная ошибка:",
+  "Timeout": "Превышено время ожидания ответа от сервера osu!.",
+  //UserInfo
+  "Recorded": "Записано:",
+  "PlayedMaps": "Сыгранных карт:",
+  "viewed": "карт из",
+  //ComboFilter
+  "from": "от:",
+  "to": "до:"
+}

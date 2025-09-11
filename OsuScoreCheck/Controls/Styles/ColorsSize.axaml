@@ -1,0 +1,27 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	
+	<SolidColorBrush x:Key="1Pink" Color="#D65C99"/>
+	<SolidColorBrush x:Key="1Black" Color="#1F1F1F"/>
+	<SolidColorBrush x:Key="1Purple" Color="#8C47D1"/>
+	<SolidColorBrush x:Key="1Green" Color="#40BF40"/>
+	<!--TextBox-->
+	<SolidColorBrush x:Key="1WhitePointer" Color="rgba(255,255,255,0.5)"/>
+	<SolidColorBrush x:Key="1White" Color="rgba(255,255,255,0.2)"/>
+	<SolidColorBrush x:Key="1GrayText" Color="#404040"/>
+	<SolidColorBrush x:Key="1Blue" Color="#0088cc"/>
+	<!--Border-->
+	<SolidColorBrush x:Key="1Black10" Color="rgba(31, 31, 31, 0.85)"/>
+
+	<x:Double x:Key="Text48">48</x:Double>
+	<x:Double x:Key="Text24">24</x:Double>
+	<x:Double x:Key="Text20">20</x:Double>
+
+	<SolidColorBrush x:Key="TextBoxBackground" Color="White"/>
+	<SolidColorBrush x:Key="TextBoxBorderBrush" Color="Transparent"/>
+	<SolidColorBrush x:Key="TextBoxBorderBrushActive" Color="#0078D4"/>
+	<SolidColorBrush x:Key="IconColor" Color="#3F3F3F"/>
+	<SolidColorBrush x:Key="TextColor" Color="#3F3F3F"/>
+	<SolidColorBrush x:Key="TextColorActive" Color="Black"/>
+
+</ResourceDictionary>

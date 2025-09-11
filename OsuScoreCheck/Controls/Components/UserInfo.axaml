@@ -1,0 +1,75 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia">
+	
+  <Design.PreviewWith>
+	  <StackPanel Spacing="8" Margin="10" Orientation="Horizontal">
+		  <UserInfo AvatarUrl=""
+			    Username="Игрок123"
+				FirstAnalysisTime="2024-12-19"
+			    TotalPlayedMaps="1553450" 
+				IsLoading="True"
+			    LastCheckedMapId="12"/>
+		  
+		  <UserInfo AvatarUrl="Assets/ManualImages/image1.png"
+			   Username="Игрок123"
+			   FirstAnalysisTime="2024-12-19"
+			   TotalPlayedMaps="1553450"
+			   IsLoading="False"
+		       LastCheckedMapId="12"/>
+	  </StackPanel>
+  </Design.PreviewWith>
+
+  <Style Selector="UserInfo">
+    <!-- Set Defaults -->
+    <Setter Property="Template">
+      <ControlTemplate>
+		  <Border Background="{DynamicResource 1Black}" CornerRadius="16" Cursor="Hand">
+			  <Grid Height="415" Width="215">
+				  
+				  <StackPanel Name="PART_Content"
+							  Margin="8" 
+							  Spacing="8" 
+							  IsVisible="{TemplateBinding IsLoading}">
+
+					  <StackPanel.Styles>
+						  <Style Selector="TextBlock">
+							  <Setter Property="FontSize" Value="{DynamicResource Text24}" />
+							  <Setter Property="HorizontalAlignment" Value="Left" />
+						  </Style>
+					  </StackPanel.Styles>
+
+					  <asyncImageLoader:AdvancedImage  
+						  Source="{TemplateBinding AvatarUrl}"
+						  Width="200" Height="200" 
+						  Stretch="Fill" 
+						  CornerRadius="8"/>
+					  <TextBlock Text="{TemplateBinding Username}" />
+					  <StackPanel>
+						  <TextBlock Text="{Localize Recorded}"/>
+						  <TextBlock Text="{TemplateBinding FirstAnalysisTime}"/>
+					  </StackPanel>
+					  <StackPanel>
+						  <TextBlock Text="{Localize PlayedMaps}"/>
+						  <TextBlock Text="{TemplateBinding TotalPlayedMaps}"/>
+					  </StackPanel>
+				  </StackPanel>
+				 
+				  <StackPanel Name="PART_LoadingIndicator" 
+							  HorizontalAlignment="Center"
+							  VerticalAlignment="Center">
+					  <Border Classes="Loading" Width="128" Height="128">
+						  <Svg Path="\Assets\Svg\Animation\Loading.svg"/>
+					  </Border>
+					  <StackPanel>
+						  <TextBlock Text="{TemplateBinding LastCheckedMapId}"/>
+						  <TextBlock Text="{Localize viewed}"/>
+						  <TextBlock Text="{TemplateBinding TotalPlayedMaps}"/>
+					  </StackPanel>
+				  </StackPanel>
+			  </Grid>
+		  </Border>
+	  </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>
