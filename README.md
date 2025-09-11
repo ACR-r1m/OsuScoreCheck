@@ -11,7 +11,7 @@
 </div>
 <div align="center">
 
-[![READMERU](https://github.com/ACR-r1m/OsuScoreCheck/blob/main/ResourceMD/BtnReadmeRU.svg)](https://github.com/ACR-r1m/OsuScoreCheck/blob/main/READMERU.md) [![VideoReview](https://github.com/ACR-r1m/OsuScoreCheck/blob/main/ResourceMD/BtnVideoReview.svg)](https://github.com/ACR-r1m/OsuScoreCheck/blob/main/READMERU.md)
+[![READMERU](https://github.com/ACR-r1m/OsuScoreCheck/blob/main/ResourceMD/BtnReadmeRU.svg)](https://github.com/ACR-r1m/OsuScoreCheck/blob/main/READMERU.md) [![VideoReview](https://github.com/ACR-r1m/OsuScoreCheck/blob/main/ResourceMD/BtnVideoReview.svg)](https://youtu.be/62uWlzF4hLE?si=DrCgCGpxpjgaOXp4)
 
 </div>
 
